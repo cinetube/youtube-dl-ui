@@ -15,7 +15,7 @@ function download(url, options = {}, onOutput = () => {}) {
 		}
 
 		const downloadProcess = spawn(
-			'youtube-dl', 
+			'youtube-dl --external-downloader aria2c --external-downloader-args "-x 16 -s 16 -k 1M"', 
 			options.extractAudio 
 				? ['-x', '--audio-format', 'm4a', safeUrl]
 				: ['--format', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best', safeUrl],
